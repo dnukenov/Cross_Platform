@@ -1,65 +1,55 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SavingsApp());
 }
 
-class MyApp extends StatelessWidget {
+class SavingsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, 
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
+      home: SavingsHomePage(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  String displayText = "Hello World!";
-  Color backgroundColor = Colors.white;
-
-  void addText() {
-    setState(() {
-      displayText = "World Hello!";
-    });
-  }
-
-  void removeText() {
-    setState(() {
-      displayText = "";
-    });
-  }
-
-  void changeBackground() {
-    setState(() {
-      backgroundColor = backgroundColor == Colors.white ? Colors.blue : Colors.white;
-    });
-  }
-
+class SavingsHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: AppBar(title: Text("Flutter App")),
+      appBar: AppBar(
+        title: Text("Saving Calculator"),
+        centerTitle: true,
+      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(displayText, style: TextStyle(fontSize: 24)),
-            SizedBox(height: 20),
-            ElevatedButton(onPressed: addText, child: Text("add text")),
-            ElevatedButton(onPressed: removeText, child: Text("del text")),
-            ElevatedButton(onPressed: changeBackground, child: Text("change bg")),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Saving Calculator",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
+              Text(
+                "A calculator to track your savings each month.\nIt helps you save money for a big purchase or reduce unnecessary expenses\nand monitor your spending directly from your phone.",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+              Spacer(),
+              Text(
+                "Developed by Nukenov Daniyar in scope of the course \"Crossplatform Development\" at Astana IT University.\nTeacher: Assistant Professor Abzal Kyzyrkanov",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
